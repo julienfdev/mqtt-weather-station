@@ -1,0 +1,16 @@
+#include <ESPAsyncTCP.h>
+#include <ESPAsyncWebServer.h>
+#include <FS.h>
+#include <LittleFS.h>
+
+
+
+AsyncWebServer server(80);
+
+void setupServer(){
+    server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
+    request->send(LittleFS, "/server/index.html", String(), false);
+
+    server.begin();
+  });
+}

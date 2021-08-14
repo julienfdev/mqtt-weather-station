@@ -1,0 +1,36 @@
+#include <Arduino.h>
+#include "LittleFS.h"
+#include "boot.h"
+#include "iotserver.h"
+#include <ESP8266WiFi.h>
+
+WiFiMode wifiMode = WiFiMode::WIFI_OFF;
+
+void setup()
+{
+  // Initializing serial and filesystem
+  Serial.begin(115200);
+  LittleFS.begin();
+
+  // getting the Wifi Mode we need to start
+  wifiMode = WiFiModeSwitch();
+  // Based on the mode, we launch different routines
+  switch (wifiMode)
+  {
+  case WIFI_AP:
+    setAccessPoint();
+    setupServer();
+    break;
+  case WIFI_STA:
+    //    setSTA();
+    break;
+  default:
+    //  setAccessPoint();
+    break;
+  }
+}
+
+void loop()
+{
+  // put your main code here, to run repeatedly:
+}
