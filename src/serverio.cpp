@@ -7,16 +7,10 @@
 
 AsyncWebServer server(80);
 
-// Defining handlers
-void handleHomePage(AsyncWebServerRequest *request){
-  // serving home page
-  request->send(LittleFS, "/server/index.html");
-}
-
 void setupAndStartConfigServer(){
 
 // attaching handlers
-server.on("/", HTTP_GET, handleHomePage);
+server.serveStatic("/", LittleFS, "/server/").setDefaultFile("index.html");
 
 Serial.println("Starting Config Web Server");
 server.begin();
