@@ -10,6 +10,7 @@
 #include <ESP8266WiFi.h>
 #include <LittleFS.h>
 #include "boot.h"
+#include "serverio.h"
 
 WiFiMode mode;
 
@@ -25,6 +26,7 @@ void setup()
   {
   case WiFiMode::WIFI_AP:
     setAccessPoint();
+    setupAndStartConfigServer();
     break;
   default:
     break;
