@@ -16,6 +16,8 @@ WiFiMode mode;
 
 void setup()
 {
+  pinMode(D0, OUTPUT);
+  digitalWrite(D0, LOW);
   // Serial port for debugging purposes, starting filesystem
   Serial.begin(115200);
   delay(100);
@@ -28,8 +30,11 @@ void setup()
     setAccessPoint();
     break;
   default:
-    Serial.println("Config file found, still WIP so we still launch the AP");
-    setAccessPoint();
+    Serial.println("Config file found, Swithing to Station Mode");
+    if (wiFiConnect())
+    {
+      Serial.println("MQTT SERVER PLACEHOLDER");
+    }
     break;
   }
   // Doesn't matter which mode we are in, we start the config server

@@ -4,5 +4,6 @@
 
 WiFiMode WiFiModeSwitch();
 void setAccessPoint();
+bool wiFiConnect();
 
 #endif
