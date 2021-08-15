@@ -1,6 +1,7 @@
 module.exports = {
-    outputDir: "../data/server",
+    outputDir: "../data/s",
     transpileDependencies: [
         'vuetify'
-    ]
+    ],
+    filenameHashing: false
 }

@@ -2,7 +2,9 @@
   <v-app>
     <v-app-bar app color="dark" dark class="d-flex justify-center">
       <div class="d-flex align-center">
-        <div class="text-h6 font-weight-light text-center">Weather Monitor <v-icon>mdi-weather-partly-cloudy</v-icon> </div>
+        <div class="text-h6 font-weight-light text-center">
+          Weather Monitor <v-icon class="ml-2">{{ weatherIcon }}</v-icon>
+        </div>
       </div>
     </v-app-bar>
     <v-main>
@@ -14,6 +16,7 @@
 <script lang="ts">
 import Vue from "vue";
 import Home from "./components/Home.vue";
+import { mdiWeatherPartlyCloudy } from "@mdi/js";
 
 export default Vue.extend({
   name: "App",
@@ -24,6 +27,7 @@ export default Vue.extend({
 
   data: () => ({
     //
+    weatherIcon: mdiWeatherPartlyCloudy,
   }),
 });
 </script>

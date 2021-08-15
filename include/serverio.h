@@ -2,5 +2,4 @@
 #define IOTSERVER_DEF
 
 void setupAndStartConfigServer();
-
 #endif

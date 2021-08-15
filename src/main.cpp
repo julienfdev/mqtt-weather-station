@@ -29,6 +29,7 @@ void setup()
     setupAndStartConfigServer();
     break;
   default:
+    Serial.println("YEAH! y'a un truc dans le fichier de config");
     break;
   }
 }
