@@ -23,44 +23,15 @@ PubSubClient client(espClient);
 
 void mqttCallback(char *topic, byte *payload, unsigned int length)
 {
-  Serial.print("Got message from broker on topic ");
-  Serial.println(topic);
-}
-void reconnect()
-{
-  const char *topic = getJsonField("mqttTopic");
-  String stringTopic = String(topic);
-  const char *login = getJsonField("mqttLogin");
-  String stringLogin = String(login);
-  const char *password = getJsonField("mqttPassword");
-  String stringPassword = String(password);
-  // Loop until we're reconnected
-  while (!client.connected())
+  char str[length + 1];
+  unsigned int i = 0;
+  for (i = 0; i < length; i++)
   {
-    Serial.print("Attempting MQTT connection...");
-    // Create a random client ID
-    String clientId = "wxmonitor-";
-    clientId += String(random(0xffff), HEX);
-    // Attempt to connect
-    if (client.connect(clientId.c_str(), stringLogin.c_str(), stringPassword.c_str()))
-    {
-      Serial.println("connected");
-      // Once connected, publish an announcement...
-      client.publish(stringTopic.c_str(), "hello world");
-      // ... and resubscribe
-
-      stringTopic += "/set";
-      client.subscribe(stringTopic.c_str());
-    }
-    else
-    {
-      Serial.print("failed, rc=");
-      Serial.print(client.state());
-      Serial.println(" try again in 5 seconds");
-      // Wait 5 seconds before retrying
-      delay(5000);
-    }
+    str[i] = (char)payload[i];
   }
+  str[i] = 0; // Null termination
+  Serial.println("Got message from broker :");
+  Serial.println(String(str));
 }
 
 void setup()
@@ -103,7 +74,7 @@ void loop()
     // mqtt loop logic
     if (!client.connected())
     {
-      reconnect();
+      reconnect(client);
     }
     client.loop();
   }

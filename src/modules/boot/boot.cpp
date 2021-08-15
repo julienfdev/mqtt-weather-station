@@ -132,7 +132,7 @@ bool wiFiConnect()
     const char *password = doc["password"];
     // connecting and keeping track of failures
     Serial.print("Connecting to : ");
-    Serial.print(ssid);
+    Serial.println(ssid);
     for (retry = 0; retry < 5; retry++)
     {
         Serial.print("Attempt #");

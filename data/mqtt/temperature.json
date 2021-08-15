@@ -1,0 +1,8 @@
+{
+    "device_class": "temperature",
+    "name": "Temperature",
+    "state_topic": "",
+    "unit_of_measurement": "°C",
+    "value_template": "{{ value_json.temperature}}",
+    "unique_id": "0x09092acfe03_temp"
+}

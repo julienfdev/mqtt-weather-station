@@ -1,8 +1,8 @@
 {
     "ssid": "",
     "password": "",
-    "mqttIp": "",
+    "mqttIp": "192.168.1.35",
     "mqttTopic": "weathermonitor",
-    "mqttLogin": "",
+    "mqttLogin": "iot",
     "mqttPassword": ""
 }
