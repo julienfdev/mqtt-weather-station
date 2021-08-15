@@ -58,30 +58,9 @@
                   <v-row
                     ><v-col class="d-flex">
                       <v-text-field
-                        v-model="mqttIp[0]"
-                        class="mr-2"
+                        v-model="mqttIp"
+                        label="MQTT broker address (IP or hostname)"
                         required
-                        type="number"
-                        hint="MQTT IP Address"
-                        persistent-hint
-                      ></v-text-field>
-                      <v-text-field
-                        v-model="mqttIp[1]"
-                        class="mx-1"
-                        required
-                        type="number"
-                      ></v-text-field>
-                      <v-text-field
-                        v-model="mqttIp[2]"
-                        class="mx-1"
-                        required
-                        type="number"
-                      ></v-text-field>
-                      <v-text-field
-                        v-model="mqttIp[3]"
-                        required
-                        class="mx-1"
-                        type="number"
                       ></v-text-field>
                     </v-col>
                     <v-col cols="12">
@@ -161,7 +140,7 @@ export default Vue.extend({
     },
     ssid: "",
     password: "",
-    mqttIp: [192, 168, 0, 0],
+    mqttIp: "",
     mqttLogin: "",
     mqttPassword: "",
     mqttTopic: "weathermonitor",

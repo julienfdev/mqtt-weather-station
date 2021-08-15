@@ -36,6 +36,7 @@ WiFiMode WiFiModeSwitch()
             const char *password = doc["password"];
             if (strlen(ssid) > 0 && strlen(password) > 0)
             {
+                configFile.close();
                 Serial.println("SSID and Password configured, switching to station mode");
                 return WiFiMode::WIFI_STA;
             }
@@ -48,8 +49,10 @@ WiFiMode WiFiModeSwitch()
     else
     {
         // We must switch to AP Mode
+        configFile.close();
         return WiFiMode::WIFI_AP;
     }
+    configFile.close();
     return WiFiMode::WIFI_AP;
 }
 
@@ -70,7 +73,8 @@ void setAccessPoint()
     WiFi.softAP(ssid, password, 13);
     Serial.print("Server IP Address : ");
     Serial.println(WiFi.softAPIP());
-}
+    apFile.close();
+    }
 
 void resetConfig()
 {
@@ -129,8 +133,6 @@ bool wiFiConnect()
     // connecting and keeping track of failures
     Serial.print("Connecting to : ");
     Serial.print(ssid);
-    Serial.print(" passphrase : ");
-    Serial.println(password);
     for (retry = 0; retry < 5; retry++)
     {
         Serial.print("Attempt #");
