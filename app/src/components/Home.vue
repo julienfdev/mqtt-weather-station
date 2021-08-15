@@ -140,7 +140,7 @@
 <script lang="ts">
 import Vue from "vue";
 import Axios from "axios";
-import { mdiChip } from "@mdi/js";
+import { mdiChip } from "@/assets/svg";
 
 const axios = Axios.create({
   baseURL: `http://${window.location.host}`,
@@ -157,7 +157,7 @@ export default Vue.extend({
   },
   data: () => ({
     icons: {
-      chip: mdiChip,
+      chip: mdiChip as string,
     },
     ssid: "",
     password: "",

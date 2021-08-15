@@ -16,7 +16,7 @@
 <script lang="ts">
 import Vue from "vue";
 import Home from "./components/Home.vue";
-import { mdiWeatherPartlyCloudy } from "@mdi/js";
+import { mdiWeatherPartlyCloudy } from "@/assets/svg";
 
 export default Vue.extend({
   name: "App",
@@ -27,7 +27,7 @@ export default Vue.extend({
 
   data: () => ({
     //
-    weatherIcon: mdiWeatherPartlyCloudy,
+    weatherIcon: mdiWeatherPartlyCloudy as string,
   }),
 });
 </script>

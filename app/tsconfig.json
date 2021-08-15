@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
+    "target": "es6",
+    "module":"es6",
     "strict": true,
     "jsx": "preserve",
     "importHelpers": true,
@@ -33,7 +33,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-  ],
+, "src/assets/svg/icons.js"  ],
   "exclude": [
     "node_modules"
   ]

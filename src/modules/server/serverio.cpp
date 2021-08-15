@@ -17,7 +17,7 @@ void onUpdate(AsyncWebServerRequest *request)
     String password;
     String serialized;
     File wifiConfigFile;
-    String wifiCfgFilePath = "/config/wifi.json";
+    String wifiCfgFilePath = "/config/config.json";
     if (request->hasParam("ssid", true))
     {
         AsyncWebParameter *p = request->getParam("ssid", true);
@@ -42,11 +42,18 @@ void onUpdate(AsyncWebServerRequest *request)
     request->send(200);
 }
 
+void onGetConfig(AsyncWebServerRequest *request)
+{
+    String cfgFilePath = "/config/config.json";
+    request->send(LittleFS, cfgFilePath, "application/json");
+}
+
 void setupAndStartConfigServer()
 {
 
     // attaching handlers
     server.on("/update", HTTP_POST, onUpdate);
+    server.on("/config", HTTP_GET, onGetConfig);
     server.serveStatic("/", LittleFS, "/s/").setDefaultFile("index.html");
 
     Serial.println("Starting Config Web Server");
