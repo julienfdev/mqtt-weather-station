@@ -18,8 +18,8 @@ void setup()
 {
   // Serial port for debugging purposes, starting filesystem
   Serial.begin(115200);
+  delay(100);
   LittleFS.begin();
-
   mode = WiFiModeSwitch();
   //Depending on the result, we either start the AP web server or the MQTT client
   switch (mode)

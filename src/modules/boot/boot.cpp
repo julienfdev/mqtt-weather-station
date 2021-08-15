@@ -4,7 +4,7 @@
 #include <ArduinoJson.h>
 
 // Determines whether to start in AP or Station mode
-String wifiCfgFilePath = "/config/wifi.json";
+String wifiCfgFilePath = "/config/config.json";
 String apFilePath = "/config/ap.json";
 File apFile;
 File configFile;
@@ -41,7 +41,6 @@ WiFiMode WiFiModeSwitch()
             else
             {
                 Serial.println("SSID and Password not in memory, switching to Access Point mode");
-                return WiFiMode::WIFI_AP;
             }
         }
     }
