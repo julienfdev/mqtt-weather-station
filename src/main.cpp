@@ -26,12 +26,13 @@ void setup()
   {
   case WiFiMode::WIFI_AP:
     setAccessPoint();
-    setupAndStartConfigServer();
     break;
   default:
     Serial.println("YEAH! y'a un truc dans le fichier de config");
     break;
   }
+  // Doesn't matter which mode we are in, we start the config server
+  setupAndStartConfigServer();
 }
 
 void loop()

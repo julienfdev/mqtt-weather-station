@@ -122,17 +122,16 @@
       </v-row>
       <v-row>
         <v-fade-transition mode="out-in">
-        <v-col cols="12" v-if="showError">
-          <v-alert
-            :color="color"
-            class="white--text"
-            border="left"
-            mode="out-in"
-            >{{ errorMessage }}</v-alert
-          >
-        </v-col>
+          <v-col cols="12" v-if="showError">
+            <v-alert
+              :color="color"
+              class="white--text"
+              border="left"
+              mode="out-in"
+              >{{ errorMessage }}</v-alert
+            >
+          </v-col>
         </v-fade-transition>
-
       </v-row>
     </v-container>
   </v-card>
@@ -144,7 +143,7 @@ import Axios from "axios";
 import { mdiChip } from "@mdi/js";
 
 const axios = Axios.create({
-  baseURL: "http://192.168.8.18",
+  baseURL: `http://${window.location.host}`,
   timeout: 10000,
 });
 
