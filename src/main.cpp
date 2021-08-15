@@ -28,7 +28,8 @@ void setup()
     setAccessPoint();
     break;
   default:
-    Serial.println("YEAH! y'a un truc dans le fichier de config");
+    Serial.println("Config file found, still WIP so we still launch the AP");
+    setAccessPoint();
     break;
   }
   // Doesn't matter which mode we are in, we start the config server

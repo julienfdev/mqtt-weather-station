@@ -180,7 +180,7 @@ export default Vue.extend({
           `ssid=${this.ssid}&password=${this.password}`
         );
         this.errorMessage =
-          "WiFi Configured! please rejoin your usual WiFi Connection and reboot your weather monitor";
+          "WiFi Configured! If you're still connected to the Access Point, reebot the device";
         this.color = "success";
         this.showError = true;
         setTimeout(() => {
@@ -198,6 +198,31 @@ export default Vue.extend({
     },
     async updateMqtt() {
       // TBD
+      try {
+        this.loading = true;
+        const json = {
+          mqttIp: this.mqttIp,
+          mqttTopic: this.mqttTopic,
+          mqttLogin: this.mqttLogin,
+          mqttPassword: this.mqttPassword,
+        };
+        await axios.post("mqttupdate", json);
+        this.errorMessage =
+          "WiFi Configured! If you're still connected to the Access Point, reebot the device";
+        this.color = "success";
+        this.showError = true;
+        setTimeout(() => {
+          this.showError = false;
+        }, 10000);
+        this.loading = false;
+      } catch (error) {
+        this.errorMessage = "An error occured, please try again";
+        this.showError = true;
+        this.loading = false;
+        setTimeout(() => {
+          this.showError = false;
+        }, 3000);
+      }
     },
   },
   async beforeMount() {
@@ -208,6 +233,7 @@ export default Vue.extend({
       this.password = config.password;
       this.mqttIp = config.mqttIp;
       this.mqttTopic = config.mqttTopic;
+      this.mqttLogin = config.mqttLogin;
       this.mqttPassword = config.mqttPassword;
     } catch (error) {
       console.error(error);
